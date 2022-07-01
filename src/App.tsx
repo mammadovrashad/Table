@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Table from './components/Table';
+import Table, { ITBody, IThead } from './components/Table';
 
 const App = () => {
-const [baza,setBaza]=useState();
+ 
+const [thead,setThead]=useState<IThead[]>([]);
+const [tbody,setTbody]=useState<ITBody[]>([]);
 
  async function getData(url:string) {
    const res= await axios.get(url);
-   console.log(res.data);
-   setBaza(res.data);
-    
+   
+   setThead(res.data.thead);
+   setTbody(res.data.tbody)
+   console.log(res.data.tbody);
+   
   }
+  
 useEffect(()=>{
- getData('http://localhost:3000/data');
-},[])
-
+ getData('http://localhost:3004/data');
+},[]);
 
   return (
     <>
-     <Table column={baza}/>
+     <Table thead={thead} tbody={tbody} />
     </>
   )
 }

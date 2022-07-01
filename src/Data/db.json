@@ -2,7 +2,7 @@
    "data":{
     "thead":[
         {
-            "id":1,
+            "id":"ggsdfg",
             "name":"KYS"
         },
         {
@@ -58,38 +58,84 @@
     "tbody":[
         {
             "id":1,
-            "KYS":123456,
-            "Tarix":"12/01/2022",
-            "Interval":"12/01/2022-12/01/2022",
-            "Həkim":2,
-            "O.T.I":2,
-            "Maşınlar":2,
-            "Səyyar":2,
-            "BARB":2,
-            "UARB":2,
-            "Nevroloji":2,
-            "Həkim-psix":2,
-            "Şüa":2,
-            "Həkim-lab":2
-
-        },{
-            "id":2,
-            "KYS":123456,
-            "Tarix":"12/01/2022",
-            "Interval":"12/01/2022-12/01/2022",
-            "Həkim":2,
-            "O.T.I":2,
-            "Maşınlar":2,
-            "Səyyar":2,
-            "BARB":2,
-            "UARB":2,
-            "Nevroloji":2,
-            "Həkim-psix":2,
-            "Şüa":2,
-            "Həkim-lab":2
-
+            "kys":123456,
+            "tarix":"12/01/2022",
+            "interval":"12/01/2022-12/01/2022",
+            "hekim":2,
+            "oti":2,
+            "masinlar":2,
+            "seyyar":2,
+            "barb":2,
+            "uarb":2,
+            "nevroloji":2,
+            "hekimPsix":2,
+            "sua":2,
+            "hekimLab":2
+        },
+        {
+            "id":1,
+            "kys":123456,
+            "tarix":"12/01/2022",
+            "interval":"12/01/2022-12/01/2022",
+            "hekim":2,
+            "oti":2,
+            "masinlar":2,
+            "seyyar":2,
+            "barb":2,
+            "uarb":2,
+            "nevroloji":2,
+            "hekimPsix":2,
+            "sua":2,
+            "hekimLab":2
+        },
+        {
+            "id":1,
+            "kys":123456,
+            "tarix":"12/01/2022",
+            "interval":"12/01/2022-12/01/2022",
+            "hekim":2,
+            "oti":2,
+            "masinlar":2,
+            "seyyar":2,
+            "barb":2,
+            "uarb":2,
+            "nevroloji":2,
+            "hekimPsix":2,
+            "sua":2,
+            "hekimLab":2
+        },
+        {
+            "id":1,
+            "kys":123456,
+            "tarix":"12/01/2022",
+            "interval":"12/01/2022-12/01/2022",
+            "hekim":2,
+            "oti":2,
+            "masinlar":2,
+            "seyyar":2,
+            "barb":2,
+            "uarb":2,
+            "nevroloji":2,
+            "hekimPsix":2,
+            "sua":2,
+            "hekimLab":2
+        },
+        {
+            "id":1,
+            "kys":123456,
+            "tarix":"12/01/2022",
+            "interval":"12/01/2022-12/01/2022",
+            "hekim":2,
+            "oti":2,
+            "masinlar":2,
+            "seyyar":2,
+            "barb":2,
+            "uarb":2,
+            "nevroloji":2,
+            "hekimPsix":2,
+            "sua":2,
+            "hekimLab":2
         }
-        
     ]
    }
 
