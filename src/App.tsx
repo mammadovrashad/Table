@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import Table, { ITBody, IThead } from './components/Table';
 
 const App = () => {
@@ -17,7 +17,7 @@ const [tbody,setTbody]=useState<ITBody[]>([]);
   }
   
 useEffect(()=>{
- getData('http://localhost:3004/data');
+ getData('http://localhost:3000/data');
 },[]);
 
   return (

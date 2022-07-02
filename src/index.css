@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 20px;
@@ -19,3 +23,12 @@
     background: #00b3fc; 
     border-radius: 10px;
   }
+.table-cell{
+  border: none !important;
+}
+.table-cell-even:nth-child(even){
+ background-color: rgb(183, 242, 242);
+}
+.table-cell-h:hover{
+  background-color: rgb(140, 223, 228);
+}

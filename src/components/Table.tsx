@@ -1,3 +1,6 @@
+
+import { VscDebugRestart } from 'react-icons/vsc';
+import { BiFilterAlt } from 'react-icons/bi';
 import '../index.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -5,11 +8,64 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { styled, alpha } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+
+// css code MaterialUI=============================================================================
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    height:'35px',
+    [theme.breakpoints.up('sm')]: {
+      width: '16ch',
+      '&:focus': {
+        width: '18ch',
+      },
+    },
+  },
+}));
+
+
+// css code MaterialUI=============================================================================
+
+
 
 interface Iid {
   id: number
@@ -36,8 +92,36 @@ export interface IThead extends Iid {
 
 export default function tableFunc({ thead, tbody }: any) {
   return (
-    <Box className='w-full bg-blue-100 h-screen flex items-center justify-center '>
-      <Box className=' w-8/12'>
+  <Box className='w-full bg-blue-100 h-screen flex flex-col items-center '>
+      <Box className='w-10/12 h-[80px] p-0 mt-[12px] flex justify-between'>
+       <Toolbar className='w-2/12 p-0 ml-[-15px]'>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+          >
+          </IconButton>
+          <Search className='bg-white w-full'>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search table item…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+        </Toolbar>
+        <Toolbar className='w-[9%] mr-[5px] p-[0px] flex justify-between'>
+          <Box className=' h-[50px] rounded-[4px] flex items-center justify-center w-[48%] border-solid border-[2px] border-blue-500 ' >
+             <VscDebugRestart className='text-blue-500  font-[25px]'/>
+          </Box>
+          <Box className=' h-[50px] rounded-[4px] flex items-center justify-center w-[48%] bg-blue-500 text-white'>
+             <BiFilterAlt/>
+          </Box>
+        </Toolbar>
+      </Box>
+      <Box className=' w-10/12'>
         <TableContainer component={Paper} className=' rounded-[15px]'>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -54,29 +138,27 @@ export default function tableFunc({ thead, tbody }: any) {
             <TableBody>
               {tbody.map((row: ITBody) => {
                 return (
-                  <TableRow
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  <TableRow className='table-cell-h table-cell-even'
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }} 
                   >
-                    <TableCell align='center'>{row.kys}</TableCell>
-                    <TableCell align="center">{row.tarix}</TableCell>
-                    <TableCell align="center">{row.interval}</TableCell>
-                    <TableCell align="center">{row.hekim}</TableCell>
-                    <TableCell align="center">{row.oti}</TableCell>
-                    <TableCell align="center">{row.masinlar}</TableCell>
-                    <TableCell align="center">{row.seyyar}</TableCell>
-                    <TableCell align="center">{row.barb}</TableCell>
-                    <TableCell align="center">{row.uarb}</TableCell>
-                    <TableCell align="center">{row.nevroloji}</TableCell>
-                    <TableCell align="center">{row.hekimPsix}</TableCell>
-                    <TableCell align="center">{row.sua}</TableCell>
-                    <TableCell align="center">{row.hekimLab}</TableCell>
-                    <TableCell align="center">
+                    <TableCell align='center' className='table-cell'>{row.kys}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.tarix}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.interval}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.hekim}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.oti}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.masinlar}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.seyyar}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.barb}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.uarb}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.nevroloji}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.hekimPsix}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.sua}</TableCell>
+                    <TableCell align="center" className='table-cell'>{row.hekimLab}</TableCell>
+                    <TableCell align="center" className='table-cell'>
                       <IconButton aria-label="delete">
-                        <DeleteIcon className='text-red-400 cursor-pointer'/>
+                        <DeleteIcon className='text-red-300 cursor-pointer'/>
                       </IconButton>
-
                     </TableCell>
-
                   </TableRow>
                 )
               })
