@@ -12,8 +12,6 @@ const [tbody,setTbody]=useState<ITBody[]>([]);
    
    setThead(res.data.thead);
    setTbody(res.data.tbody)
-   console.log(res.data.tbody);
-   
   }
   
 useEffect(()=>{
@@ -22,7 +20,7 @@ useEffect(()=>{
 
   return (
     <>
-     <Table thead={thead} tbody={tbody} />
+     <Table thead={thead} tbody={tbody} setTbody={setTbody} />
     </>
   )
 }

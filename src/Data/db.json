@@ -2,7 +2,7 @@
    "data":{
     "thead":[
         {
-            "id":"ggsdfg",
+            "id":1,
             "name":"KYS"
         },
         {
@@ -49,19 +49,20 @@
             "id":12,
             "name":"Şüa"
         },
-        {
+         {
             "id":13,
-            "name":"Həkim-lab"
-        }
+            "name":"Həkim Lab"
+            
+         }
         
     ],
     "tbody":[
         {
             "id":1,
-            "kys":123456,
+            "kys":1,
             "tarix":"12/01/2022",
             "interval":"12/01/2022-12/01/2022",
-            "hekim":2,
+            "hekim":"Asif",
             "oti":2,
             "masinlar":2,
             "seyyar":2,
@@ -73,11 +74,11 @@
             "hekimLab":2
         },
         {
-            "id":1,
-            "kys":123456,
+            "id":2,
+            "kys":12,
             "tarix":"12/01/2022",
             "interval":"12/01/2022-12/01/2022",
-            "hekim":2,
+            "hekim":"Qara",
             "oti":2,
             "masinlar":2,
             "seyyar":2,
@@ -89,11 +90,11 @@
             "hekimLab":2
         },
         {
-            "id":1,
-            "kys":123456,
+            "id":3,
+            "kys":123,
             "tarix":"12/01/2022",
             "interval":"12/01/2022-12/01/2022",
-            "hekim":2,
+            "hekim":"Eltun",
             "oti":2,
             "masinlar":2,
             "seyyar":2,
@@ -105,11 +106,11 @@
             "hekimLab":2
         },
         {
-            "id":1,
-            "kys":123456,
+            "id":4,
+            "kys":1234,
             "tarix":"12/01/2022",
             "interval":"12/01/2022-12/01/2022",
-            "hekim":2,
+            "hekim":"Muxtar",
             "oti":2,
             "masinlar":2,
             "seyyar":2,
@@ -121,11 +122,11 @@
             "hekimLab":2
         },
         {
-            "id":1,
-            "kys":123456,
+            "id":5,
+            "kys":12345,
             "tarix":"12/01/2022",
             "interval":"12/01/2022-12/01/2022",
-            "hekim":2,
+            "hekim":"Perviz",
             "oti":2,
             "masinlar":2,
             "seyyar":2,

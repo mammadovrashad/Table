@@ -1,8 +1,9 @@
 
 import { VscDebugRestart } from 'react-icons/vsc';
+import { BsChevronLeft,BsChevronRight } from 'react-icons/bs';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../index.css';
-import Table from '@mui/material/Table';
+import {Table} from '@mui/material';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -16,7 +17,8 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { ChangeEvent, KeyboardEvent } from 'react';
+
 
 // css code MaterialUI=============================================================================
 const Search = styled('div')(({ theme }) => ({
@@ -74,7 +76,7 @@ export interface ITBody extends Iid {
   kys: number,
   tarix: string,
   interval: string,
-  hekim: number,
+  hekim: string,
   oti: number,
   masinlar: string,
   seyyar: number,
@@ -90,7 +92,33 @@ export interface IThead extends Iid {
   name: string
 }
 
-export default function tableFunc({ thead, tbody }: any) {
+
+
+export default function tableFunc({ thead, tbody,setTbody }: any):JSX.Element {
+
+
+// React Events+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const deleteTableRow=(id:number)=>{
+  let remainingArr = tbody.filter((data:ITBody) =>{
+    return data.id !=id}
+    )
+   setTbody([...remainingArr])
+}
+
+const reloadTable=()=>{
+     window.location.reload();
+}
+
+const searchByDoctor=(event:KeyboardEvent<HTMLInputElement>)=>{ {
+    if (event.key === "Enter") {
+       const value=(event.target as HTMLInputElement).value;
+       console.log(value);
+       
+    }
+}
+   
+}
+// React Events+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   return (
   <Box className='w-full bg-blue-100 h-screen flex flex-col items-center '>
       <Box className='w-10/12 h-[80px] p-0 mt-[12px] flex justify-between'>
@@ -102,30 +130,30 @@ export default function tableFunc({ thead, tbody }: any) {
             aria-label="open drawer"
           >
           </IconButton>
-          <Search className='bg-white w-full'>
+          <Search className='bg-white w-full rounded-[5px]'>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
+            <StyledInputBase onKeyUp={searchByDoctor}
               placeholder="Search table item…"
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
         </Toolbar>
         <Toolbar className='w-[9%] mr-[5px] p-[0px] flex justify-between'>
-          <Box className=' h-[50px] rounded-[4px] flex items-center justify-center w-[48%] border-solid border-[2px] border-blue-500 ' >
+          <Box onClick={reloadTable}  className='cursor-pointer h-[50px] rounded-[4px] flex items-center justify-center w-[55px] border-solid border-[2px] border-blue-500 ' >
              <VscDebugRestart className='text-blue-500  font-[25px]'/>
           </Box>
-          <Box className=' h-[50px] rounded-[4px] flex items-center justify-center w-[48%] bg-blue-500 text-white'>
+          <Box className='cursor-pointer h-[50px] rounded-[4px] flex items-center justify-center w-[55px] bg-blue-500 text-white'>
              <BiFilterAlt/>
           </Box>
         </Toolbar>
       </Box>
       <Box className=' w-10/12'>
-        <TableContainer component={Paper} className=' rounded-[15px]'>
+        <TableContainer component={Paper} className=' rounded-[15px] h-[500px]'>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
+            <TableHead className='border-none'>
+              <TableRow >
                 {
                   thead.map((item: IThead) => {
                     return (
@@ -138,9 +166,9 @@ export default function tableFunc({ thead, tbody }: any) {
             <TableBody>
               {tbody.map((row: ITBody) => {
                 return (
-                  <TableRow className='table-cell-h table-cell-even'
+                  <TableRow key={row.id} className='table-cell-h table-cell-even'
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }} 
-                  >
+                    >
                     <TableCell align='center' className='table-cell'>{row.kys}</TableCell>
                     <TableCell align="center" className='table-cell'>{row.tarix}</TableCell>
                     <TableCell align="center" className='table-cell'>{row.interval}</TableCell>
@@ -156,7 +184,7 @@ export default function tableFunc({ thead, tbody }: any) {
                     <TableCell align="center" className='table-cell'>{row.hekimLab}</TableCell>
                     <TableCell align="center" className='table-cell'>
                       <IconButton aria-label="delete">
-                        <DeleteIcon className='text-red-300 cursor-pointer'/>
+                        <DeleteIcon onClick={()=>{deleteTableRow(row.id)}} className='text-red-300 cursor-pointer'/>
                       </IconButton>
                     </TableCell>
                   </TableRow>
@@ -166,6 +194,17 @@ export default function tableFunc({ thead, tbody }: any) {
             </TableBody>
           </Table>
         </TableContainer>
+        <Box className='flex  items-center justify-end translate-y-[-80px] translate-x-[-5%]'>
+             <button className='corusel-btn'>
+               <BsChevronLeft/>
+              </button>
+             <button className='corusel-btn isActive'>1</button>
+             <button className='corusel-btn'>2</button>
+             <button className='corusel-btn'>3</button>
+             <button className='corusel-btn'>4</button>
+             <button className='corusel-btn'>5</button>
+             <button className='corusel-btn'><BsChevronRight/></button>
+        </Box>
       </Box>
     </Box>
   );
