@@ -3,7 +3,7 @@ import { VscDebugRestart } from 'react-icons/vsc';
 import { BsChevronLeft,BsChevronRight } from 'react-icons/bs';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../index.css';
-import {Table} from '@mui/material';
+import {Pagination, Stack, Table} from '@mui/material';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -141,7 +141,7 @@ const searchByDoctor=(event:KeyboardEvent<HTMLInputElement>)=>{ {
           </Search>
         </Toolbar>
         <Toolbar className='w-[9%] mr-[5px] p-[0px] flex justify-between'>
-          <Box onClick={reloadTable}  className='cursor-pointer h-[50px] rounded-[4px] flex items-center justify-center w-[55px] border-solid border-[2px] border-blue-500 ' >
+          <Box onClick={reloadTable}  className='cursor-pointer h-[50px] mr-[5px] rounded-[4px] flex items-center justify-center w-[55px] border-solid border-[2px] border-blue-500 ' >
              <VscDebugRestart className='text-blue-500  font-[25px]'/>
           </Box>
           <Box className='cursor-pointer h-[50px] rounded-[4px] flex items-center justify-center w-[55px] bg-blue-500 text-white'>
@@ -195,15 +195,23 @@ const searchByDoctor=(event:KeyboardEvent<HTMLInputElement>)=>{ {
           </Table>
         </TableContainer>
         <Box className='flex  items-center justify-end translate-y-[-80px] translate-x-[-5%]'>
-             <button className='corusel-btn'>
-               <BsChevronLeft/>
-              </button>
-             <button className='corusel-btn isActive'>1</button>
-             <button className='corusel-btn'>2</button>
-             <button className='corusel-btn'>3</button>
-             <button className='corusel-btn'>4</button>
-             <button className='corusel-btn'>5</button>
-             <button className='corusel-btn'><BsChevronRight/></button>
+               <Stack spacing={2} className='translate-x-[-10px] translate-y-[20px]'>
+                   <Pagination 
+                  sx={{
+                    ".MuiButtonBase-root, .MuiPaginationItem-root, .MuiPaginationItem-sizeMedium, .MuiPaginationItem-outlined, .MuiPaginationItem-rounded, .MuiPaginationItem-page":{
+                       backgroundColor:"blue",
+                      color:"white",
+                      borderColor:"#00B3FC",
+                      "&:hover, &focus ,&:visited":{
+                        backgroundColor:"#00B3FC",
+                        color:"white"
+                        
+                      }
+                    }
+                  }}
+                  color="primary"
+                    count={5} variant="outlined"  shape="rounded"  />
+               </Stack>
         </Box>
       </Box>
     </Box>
