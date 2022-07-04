@@ -6,12 +6,14 @@ const App = () => {
  
 const [thead,setThead]=useState<IThead[]>([]);
 const [tbody,setTbody]=useState<ITBody[]>([]);
+const [addTbody,setAddTbody]=useState<any>([]);
 
  async function getData(url:string) {
    const res= await axios.get(url);
    
    setThead(res.data.thead);
-   setTbody(res.data.tbody)
+   setTbody(res.data.tbody);
+   setAddTbody(res.data.tbody);
   }
   
 useEffect(()=>{
@@ -20,7 +22,7 @@ useEffect(()=>{
 
   return (
     <>
-     <Table thead={thead} tbody={tbody} setTbody={setTbody} />
+     <Table thead={thead} tbody={tbody} addTbody={addTbody} setTbody={setTbody} />
     </>
   )
 }

@@ -1,6 +1,5 @@
 
 import { VscDebugRestart } from 'react-icons/vsc';
-import { BsChevronLeft,BsChevronRight } from 'react-icons/bs';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../index.css';
 import {Pagination, Stack, Table} from '@mui/material';
@@ -17,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { ChangeEvent, KeyboardEvent } from 'react';
+import {  KeyboardEvent, useState } from 'react';
 
 
 // css code MaterialUI=============================================================================
@@ -94,8 +93,7 @@ export interface IThead extends Iid {
 
 
 
-export default function tableFunc({ thead, tbody,setTbody }: any):JSX.Element {
-
+export default function tableFunc({ thead, tbody,setTbody,addTbody}: any):JSX.Element {
 
 // React Events+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const deleteTableRow=(id:number)=>{
@@ -110,10 +108,16 @@ const reloadTable=()=>{
 }
 
 const searchByDoctor=(event:KeyboardEvent<HTMLInputElement>)=>{ {
+     setTbody([...addTbody]);
     if (event.key === "Enter") {
        const value=(event.target as HTMLInputElement).value;
        console.log(value);
-       
+       const filteredCoins = tbody.filter((docName:ITBody) =>
+        docName.hekim.toLowerCase().includes(value.toLowerCase())
+        
+      );   
+      setTbody([...filteredCoins])
+      // setFilterData([...filteredCoins])
     }
 }
    
@@ -199,18 +203,17 @@ const searchByDoctor=(event:KeyboardEvent<HTMLInputElement>)=>{ {
                    <Pagination 
                   sx={{
                     ".MuiButtonBase-root, .MuiPaginationItem-root, .MuiPaginationItem-sizeMedium, .MuiPaginationItem-outlined, .MuiPaginationItem-rounded, .MuiPaginationItem-page":{
-                       backgroundColor:"blue",
-                      color:"white",
-                      borderColor:"#00B3FC",
+                      color:"#00B3FC",
+                      border:"1px solid #00B3FC",
                       "&:hover, &focus ,&:visited":{
                         backgroundColor:"#00B3FC",
                         color:"white"
-                        
+          
                       }
                     }
                   }}
                   color="primary"
-                    count={5} variant="outlined"  shape="rounded"  />
+                    count={5}   shape="rounded"  />
                </Stack>
         </Box>
       </Box>
